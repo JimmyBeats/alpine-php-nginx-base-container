@@ -1,5 +1,7 @@
 FROM php:7.3-fpm-alpine3.11
 
+MAINTAINER jamesbeattie@gmail.com
+
 # Install packages
 RUN apk --no-cache add nginx supervisor $PHPIZE_DEPS
 
