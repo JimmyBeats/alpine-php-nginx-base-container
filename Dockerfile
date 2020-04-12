@@ -5,6 +5,9 @@ MAINTAINER jamesbeattie@gmail.com
 # Install packages
 RUN apk --no-cache add nginx supervisor $PHPIZE_DEPS
 
+# Install Redis extension
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
 RUN chown -R nobody.nobody /run && \
   chown -R nobody.nobody /var/lib/nginx && \
