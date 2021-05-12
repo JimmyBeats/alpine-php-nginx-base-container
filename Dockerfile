@@ -5,6 +5,9 @@ MAINTAINER jamesbeattie@gmail.com
 # Install packages
 RUN apk --no-cache add nginx supervisor $PHPIZE_DEPS
 
+# Make sure we have the latest composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Install Redis extension
 RUN pecl install redis && docker-php-ext-enable redis
 
